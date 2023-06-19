@@ -1,0 +1,87 @@
+<mxfile host="Electron" modified="2023-06-15T15:46:40.645Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.4.0 Chrome/112.0.5615.204 Electron/24.5.1 Safari/537.36" etag="RDio2bRlJEPXqEPwLIv1" version="21.4.0" type="device">
+  <diagram name="Page-1" id="5g_8QTyMUXvBuzQmZhH3">
+    <mxGraphModel dx="963" dy="629" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="DCsSReyJqwdb-_XZOj-n-1" value="Board" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="20" y="160" width="310" height="490" as="geometry" />
+        </mxCell>
+        <mxCell id="DCsSReyJqwdb-_XZOj-n-2" value="&lt;u style=&quot;font-weight: bold;&quot;&gt;- COORDINATE_COLOR:Color=new Color(37,38,67)&lt;br&gt;&lt;/u&gt;&lt;u style=&quot;font-weight: bold;&quot;&gt;- WIDTH:int=500&lt;/u&gt;&lt;br&gt;&lt;u style=&quot;font-weight: bold;&quot;&gt;- HEIGHT:int=500&lt;/u&gt;&lt;br&gt;&lt;u style=&quot;font-weight: bold;&quot;&gt;- ALPHABET:char[]&lt;/u&gt;&lt;br&gt;- innerBoard:JPanel&lt;br&gt;- coordinates:Coordinate[][]&lt;br&gt;- dimension:int&lt;br&gt;- ships:Ship[]&lt;br&gt;- hoverRow:int&lt;br&gt;- hoverCol:int&lt;br&gt;- hoverActive:boolean&lt;br&gt;- originalColors:Color[][]&lt;br&gt;- progressBar:JProgressBar&lt;br&gt;- progressLabel:JLabel" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="DCsSReyJqwdb-_XZOj-n-1">
+          <mxGeometry y="26" width="310" height="214" as="geometry" />
+        </mxCell>
+        <mxCell id="DCsSReyJqwdb-_XZOj-n-3" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="DCsSReyJqwdb-_XZOj-n-1">
+          <mxGeometry y="240" width="310" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="DCsSReyJqwdb-_XZOj-n-4" value="+ Board(dimension:int, colors:Color[]) &amp;lt;&amp;lt;constructor&amp;gt;&amp;gt;&lt;br&gt;+ addAlphabetCoordinateLabel(row:int, buttonSize:int, color:Color):void&lt;br&gt;+ addNumericCoordinateLable(row:int, buttonSize:int, color:Color):void&lt;br&gt;+ addCoordinateButton(row:int, col:int, buttonSize:int):void&lt;br&gt;+ updateButtonColors():void&lt;br&gt;+ isSutableForShip(row:int, col:int, length:int):boolean&lt;br&gt;+ paintPermanent(button:Coordinate, placeShips:boolean):void&lt;br&gt;+ placeShip(row:int, col:int):void&lt;br&gt;+ removeShip(row:int, col:int):void&lt;br&gt;+ generateShip():void&lt;br&gt;+ randomizeShip():void&lt;br&gt;+ actionPerformed(e:ActionEvent) &amp;lt;&amp;lt;Override&amp;gt;&amp;gt;&lt;br&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="DCsSReyJqwdb-_XZOj-n-1">
+          <mxGeometry y="248" width="310" height="242" as="geometry" />
+        </mxCell>
+        <mxCell id="DCsSReyJqwdb-_XZOj-n-5" value="JPanel" style="html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="30" y="40" width="110" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="DCsSReyJqwdb-_XZOj-n-6" value="ActionListener" style="html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="170" y="40" width="110" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="DCsSReyJqwdb-_XZOj-n-8" value="Extends" style="endArrow=block;endSize=16;endFill=0;html=1;rounded=0;exitX=0.25;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="DCsSReyJqwdb-_XZOj-n-1" target="DCsSReyJqwdb-_XZOj-n-5">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="70" y="320" as="sourcePoint" />
+            <mxPoint x="230" y="320" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="DCsSReyJqwdb-_XZOj-n-10" value="" style="endArrow=block;dashed=1;endFill=0;endSize=12;html=1;rounded=0;exitX=0.75;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="DCsSReyJqwdb-_XZOj-n-1" target="DCsSReyJqwdb-_XZOj-n-6">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="70" y="320" as="sourcePoint" />
+            <mxPoint x="230" y="320" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="DCsSReyJqwdb-_XZOj-n-11" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;Coordinate&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;b&gt;&lt;u&gt;- serialVersionUID:long=1L&lt;/u&gt;&lt;/b&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- column:int&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- row:int&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ Coordinate(row:int, column:int) &amp;lt;&amp;lt;constructor&amp;gt;&amp;gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ getRow():int&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ getColumn():int&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="430" y="160" width="190" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="DCsSReyJqwdb-_XZOj-n-12" value="JButton" style="html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="470" y="40" width="110" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="DCsSReyJqwdb-_XZOj-n-13" value="Extends" style="endArrow=block;endSize=16;endFill=0;html=1;rounded=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="DCsSReyJqwdb-_XZOj-n-11" target="DCsSReyJqwdb-_XZOj-n-12">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="500" y="320" as="sourcePoint" />
+            <mxPoint x="660" y="320" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="DCsSReyJqwdb-_XZOj-n-14" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;Ship&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- length:int&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- row:int&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- col:int&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ Ship(length:int) &amp;lt;&amp;lt;constructor&amp;gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ coordinateSetter(row:int, col:int):void&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ getLength():int&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ getRow():int&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ getCol():int&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="450" y="380" width="170" height="191" as="geometry" />
+        </mxCell>
+        <mxCell id="DCsSReyJqwdb-_XZOj-n-15" value="Relation" style="endArrow=open;html=1;endSize=12;startArrow=diamondThin;startSize=14;startFill=0;edgeStyle=orthogonalEdgeStyle;rounded=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="DCsSReyJqwdb-_XZOj-n-14" target="DCsSReyJqwdb-_XZOj-n-2">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="110" y="330" as="sourcePoint" />
+            <mxPoint x="270" y="330" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="DCsSReyJqwdb-_XZOj-n-16" value="n" style="edgeLabel;resizable=0;html=1;align=left;verticalAlign=top;" connectable="0" vertex="1" parent="DCsSReyJqwdb-_XZOj-n-15">
+          <mxGeometry x="-1" relative="1" as="geometry">
+            <mxPoint x="-20" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="DCsSReyJqwdb-_XZOj-n-17" value="1" style="edgeLabel;resizable=0;html=1;align=right;verticalAlign=top;" connectable="0" vertex="1" parent="DCsSReyJqwdb-_XZOj-n-15">
+          <mxGeometry x="1" relative="1" as="geometry">
+            <mxPoint x="21" y="-13" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="DCsSReyJqwdb-_XZOj-n-18" value="Relation" style="endArrow=open;html=1;endSize=12;startArrow=diamondThin;startSize=14;startFill=0;edgeStyle=orthogonalEdgeStyle;rounded=0;exitX=-0.006;exitY=0.563;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.999;entryY=0.364;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="DCsSReyJqwdb-_XZOj-n-11" target="DCsSReyJqwdb-_XZOj-n-2">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="330" y="100" as="sourcePoint" />
+            <mxPoint x="490" y="100" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="DCsSReyJqwdb-_XZOj-n-19" value="n" style="edgeLabel;resizable=0;html=1;align=left;verticalAlign=top;" connectable="0" vertex="1" parent="DCsSReyJqwdb-_XZOj-n-18">
+          <mxGeometry x="-1" relative="1" as="geometry">
+            <mxPoint x="-19" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="DCsSReyJqwdb-_XZOj-n-20" value="1" style="edgeLabel;resizable=0;html=1;align=right;verticalAlign=top;" connectable="0" vertex="1" parent="DCsSReyJqwdb-_XZOj-n-18">
+          <mxGeometry x="1" relative="1" as="geometry">
+            <mxPoint x="21" y="-14" as="offset" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
