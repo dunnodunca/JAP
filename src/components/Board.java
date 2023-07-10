@@ -6,28 +6,28 @@ import javax.swing.*;
 
 import java.util.*;
 
-public class Board extends JPanel implements ActionListener {
-	private static final long serialVersionUID = 1L;
-	private static final Color COORDINATE_COLOR = new Color(37,38,67);
-	private static final int WIDTH = 500;
-	private static final int HEIGHT = 500;
-	static final char[] ALPHABET = { '|', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N',
+public abstract class Board extends JPanel {
+	protected static final long serialVersionUID = 1L;
+	protected static final Color COORDINATE_COLOR = new Color(37, 38, 67);
+	protected static final int WIDTH = 500;
+	protected static final int HEIGHT = 500;
+	public static final char[] ALPHABET = { '|', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N',
 			'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' };
 
 	protected JPanel innerBoard;
-	private Coordinate[][] coordinates;
-	private int dimension;
-	private Ship[] ships;
-	private int hoverRow;
-	private int hoverCol;
-	private boolean hoverActive;
-	private Color[][] originalColors; // Store the original button colors
-	private JProgressBar progressBar;
-	private JLabel progressLabel;
+	protected Coordinate[][] coordinates;
+	protected Map<String, Coordinate> coordinatesMap;
+	protected int dimension;
+	protected Ship[] ships;
+	protected int hoverRow;
+	protected int hoverCol;
+	protected boolean hoverActive;
+	protected Color[][] originalColors; // Store the original button colors
+	protected JProgressBar progressBar;
+	protected JLabel progressLabel;
 	protected Coordinate button;
-	
-	private String position;
-	private ArrayList <String> posList = new ArrayList<String>();
+	protected String position;
+
 	/**
 	 * Constructs a new Board instance.
 	 * 
@@ -35,17 +35,17 @@ public class Board extends JPanel implements ActionListener {
 	 * @param colors    an array of colors for the board
 	 */
 	public Board(int dimension, Color[] colors, String name) {
-
-		ships = new Ship[(dimension + 1) * dimension / 2];
+		this.coordinatesMap = new HashMap<>();
+		this.ships = new Ship[(dimension + 1) * dimension / 2];
 		this.dimension = dimension;
 		int numCell = (dimension * 2) + 1;
-		coordinates = new Coordinate[numCell][numCell];
-		originalColors = new Color[numCell][numCell]; // Initialize originalColors array
+		this.coordinates = new Coordinate[numCell][numCell];
+		this.originalColors = new Color[numCell][numCell]; // Initialize originalColors array
 		setPreferredSize(new Dimension(WIDTH, HEIGHT));
 		setBackground(colors[2]);
 
-		innerBoard = new JPanel(new GridLayout(numCell + 1, numCell + 1));
-		innerBoard.setBackground(colors[2]);
+		this.innerBoard = new JPanel(new GridLayout(numCell + 1, numCell + 1));
+		this.innerBoard.setBackground(colors[2]);
 
 		int buttonSize = WIDTH / numCell;
 
@@ -81,7 +81,6 @@ public class Board extends JPanel implements ActionListener {
 		add(innerBoard);
 		add(playerLabel);
 		add(progressBar);
-		
 
 	}
 
@@ -124,40 +123,7 @@ public class Board extends JPanel implements ActionListener {
 	 * @param col        the column index
 	 * @param buttonSize the size of the button
 	 */
-	public void addCoordinateButton(int row, int col, int buttonSize) {
-		button = new Coordinate(row, col);
-		coordinates[row][col] = button;
-		originalColors[row][col] = COORDINATE_COLOR; // Store the original color
-
-//		button.addMouseListener(new MouseAdapter() {
-//			@Override
-//			public void mouseEntered(MouseEvent e) {
-//				hoverActive = true;
-//				hoverRow = row;
-//				hoverCol = col;
-//				updateButtonColors();
-//			}
-//
-//			@Override
-//			public void mouseExited(MouseEvent e) {
-//				hoverActive = false;
-//				updateButtonColors();
-//			}
-//
-//			@Override
-//			public void mouseClicked(MouseEvent e) {
-//				if (button.getBackground() == Color.GREEN) {
-//					paintPermanent(button, true);
-//				}
-//			}
-//		});
-		button.setBackground(originalColors[row][col]); // Use the original color
-		button.setOpaque(true);
-		button.setPreferredSize(new Dimension(buttonSize, buttonSize));
-		button.setBorder(BorderFactory.createLineBorder(Color.GRAY));
-		button.addActionListener(this);
-		innerBoard.add(button);
-	}
+	public abstract void addCoordinateButton(int row, int col, int buttonSize);
 
 	/**
 	 * Updates the button colors based on the hover state.
@@ -305,7 +271,7 @@ public class Board extends JPanel implements ActionListener {
 						coordinates[randRow][i].setBackground(Color.GRAY);
 						coordinates[randRow][i].setText(Integer.toString(ship.getLength()));
 					}
-					
+
 					ship.coordinateSetter(randRow, randCol);
 					shipPlaced = true;
 				}
@@ -313,43 +279,22 @@ public class Board extends JPanel implements ActionListener {
 		}
 	}
 
-	/* Enter design mode, users can define their own table */
-	public void designMode() {
-//		for (Ship ship : ships) {
-//		}
-	}
-	
-	public String getCoordinate() {
-		return position;
-	}
-	
-	public void setCoordinate(String position) {
-		this.position=position;
-	}
-	
-	@Override
-	public void actionPerformed(ActionEvent e) {
-	
-		Coordinate button = (Coordinate) e.getSource();
-		String clickedButton = ALPHABET[button.getColumn()] + "" + (button.getRow());
-		for(Ship ship : ships){
-			System.out.println(ships.length);
-			for(String coordinate : ship.getCoordinates()) {
-				System.out.println("ship coordinates: " + coordinate + ", clicked: " + clickedButton);
-
-				if(coordinate.equals(clickedButton)) {
-					button.setBackground( Color.RED);
-					//button.setText(clickedButton);
-					button.setForeground(Color.white);
-					button.setOpaque(true);
-					return;
-				}
-			}
-		}
-		button.setBackground( Color.blue);
-		//button.setText(clickedButton);
+	/**
+	 * Paint red, indicating a hit.
+	 */
+	public void paintRed(Coordinate button) {
+		button.setBackground(Color.RED);
 		button.setForeground(Color.white);
 		button.setOpaque(true);
-
 	}
+
+	/**
+	 * Paint blue, indicating a miss.
+	 */
+	public void paintBlue(Coordinate button) {
+		button.setBackground(Color.blue);
+		button.setForeground(Color.white);
+		button.setOpaque(true);
+	}
+
 }

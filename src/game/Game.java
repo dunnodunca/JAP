@@ -9,8 +9,7 @@ import components.Board;
  *  @author Gia Bao Tran - Kiet Tran
  */
 public class Game extends JFrame {
-    private static final long serialVersionUID = 1L;
-	Board player_1;
+    Board player_1;
     Board player_2;
 
     /**
@@ -18,10 +17,10 @@ public class Game extends JFrame {
      */
     public Game() {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setTitle("Bang Bang Simulation");        
-        getContentPane().setBackground(new Color(26,20,35));
+        setTitle("Bang Bang Simulation / Gia Bao Tran-Kiet Tran");        
+        getContentPane().setBackground(new Color(32, 33, 36));
         setLocationRelativeTo(null);
-        setSize(1300, 725);
+        setSize(1300, 800);
         setVisible(true);
         setResizable(false);
         setLayout(new BorderLayout());

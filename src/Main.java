@@ -19,7 +19,8 @@ public class Main {
     /**
      * Runs the game.
      */
-    public static void runGame() {
-        new Game();
+    @SuppressWarnings("unused")
+	public static void runGame() {
+        Game game = new Game();
     }
 }
